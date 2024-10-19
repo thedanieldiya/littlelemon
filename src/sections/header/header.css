@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 1024px;
+	max-width: 880px;
 	margin: 0 auto;
 	padding: 16px;
 	position: relative;
@@ -72,11 +72,21 @@ menu > ul li a {
 }
 
 @media screen and (max-width: 768px) {
-	nav > ul {
+	header nav > ul {
 		display: none;
 	}
 
 	header svg {
 		display: block;
+	}
+
+	.header {
+		padding: 12px;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.header {
+		padding: 8px 4px;
 	}
 }

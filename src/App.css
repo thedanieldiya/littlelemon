@@ -1,5 +1,17 @@
 .section {
-	max-width: 1024px;
-	margin: 80px auto;
-	padding: 16px auto;
+	max-width: 880px;
+	margin: 0 auto;
+	padding: 80px 16px;
+}
+
+@media screen and (max-width: 768px) {
+	.section {
+		padding: 60px 12px;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.section {
+		padding: 60px 4px;
+	}
 }

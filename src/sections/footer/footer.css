@@ -1,0 +1,51 @@
+footer img {
+	height: 200px;
+	width: auto;
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 32px;
+}
+
+.footer__texts {
+	display: flex;
+	gap: 32px;
+	flex-wrap: wrap;
+}
+
+footer section {
+	max-width: 240px;
+}
+
+footer h2 {
+	margin: 0;
+	font-family: var(--markazi);
+	font-weight: 400;
+	font-size: 32px;
+	color: var(--s-black);
+}
+
+footer a {
+	font-size: 16px;
+	font-family: var(--karla);
+	color: var(--s-black);
+	transition: all 0.2s ease-in-out;
+}
+
+footer a:hover {
+	color: var(--s-orange);
+	text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+	footer h2 {
+		font-size: 24px;
+	}
+
+	footer a {
+		font-size: 12px;
+	}
+}
