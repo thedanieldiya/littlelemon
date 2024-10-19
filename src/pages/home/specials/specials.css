@@ -13,14 +13,6 @@
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 16px;
-
-	@media screen and (max-width: 768px) {
-		gap: 12px;
-	}
-
-	@media screen and (max-width: 540px) {
-		grid-template-columns: repeat(1, 1fr);
-	}
 }
 
 .specials__card {
@@ -76,4 +68,17 @@
 
 .specials__card-body__pricing span {
 	color: var(--s-orange);
+}
+
+@media screen and (max-width: 768px) {
+	.special__meals {
+		gap: 12px;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.special__meals {
+		gap: 8px;
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
