@@ -1,0 +1,12 @@
+.nopage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
+}
+
+h2 {
+	font-family: var(--markazi);
+	font-size: 48px;
+	font-weight: bold;
+}

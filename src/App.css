@@ -6,12 +6,12 @@
 
 @media screen and (max-width: 768px) {
 	.section {
-		padding: 60px 12px;
+		padding: 48px 12px;
 	}
 }
 
 @media screen and (max-width: 540px) {
 	.section {
-		padding: 60px 4px;
+		padding: 32px 6px;
 	}
 }

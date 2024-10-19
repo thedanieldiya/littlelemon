@@ -1,32 +1,36 @@
 import { useState } from "react";
 import { Logo } from "../../assets";
 import "./header.css";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	return (
 		<header className="shadow">
 			<div className="header">
-				<img src={Logo} alt="Little Lemon Logo" />
+				<Link to="/">
+					<img src={Logo} alt="Little Lemon Logo" />
+				</Link>
+
 				<nav>
 					<ul>
 						<li>
-							<a href="/">Home</a>
+							<NavLink to="/">Home</NavLink>
 						</li>
 						<li>
-							<a href="/">About</a>
+							<NavLink to="/">About</NavLink>
 						</li>
 						<li>
-							<a href="/reservation">Order Online</a>
+							<NavLink to="/reservation">Order Online</NavLink>
 						</li>
 						<li>
-							<a href="/reservation">Reservation</a>
+							<NavLink to="/reservation">Reservation</NavLink>
 						</li>
 						<li>
-							<a href="/">Menu</a>
+							<NavLink to="/">Menu</NavLink>
 						</li>
 						<li>
-							<a href="/">Login</a>
+							<NavLink to="/">Login</NavLink>
 						</li>
 					</ul>
 					{isMenuOpen ? (
@@ -61,22 +65,40 @@ const Header = () => {
 							<div className="menu shadow">
 								<ul>
 									<li>
-										<a href="/">Home</a>
+										<NavLink to="/" onClick={() => setIsMenuOpen(false)}>
+											Home
+										</NavLink>
 									</li>
 									<li>
-										<a href="/">About</a>
+										<NavLink to="/" onClick={() => setIsMenuOpen(false)}>
+											About
+										</NavLink>
 									</li>
 									<li>
-										<a href="/reservation">Order Online</a>
+										<NavLink
+											to="/reservation"
+											onClick={() => setIsMenuOpen(false)}
+										>
+											Order Online
+										</NavLink>
 									</li>
 									<li>
-										<a href="/reservation">Reservation</a>
+										<NavLink
+											to="/reservation"
+											onClick={() => setIsMenuOpen(false)}
+										>
+											Reservation
+										</NavLink>
 									</li>
 									<li>
-										<a href="/">Menu</a>
+										<NavLink to="/" onClick={() => setIsMenuOpen(false)}>
+											Menu
+										</NavLink>
 									</li>
 									<li>
-										<a href="/">Login</a>
+										<NavLink to="/" onClick={() => setIsMenuOpen(false)}>
+											Login
+										</NavLink>
 									</li>
 								</ul>
 							</div>

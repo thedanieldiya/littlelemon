@@ -1,12 +1,20 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Footer, Header, Main } from "./sections";
+import Layout from "./sections/Layout";
+import { Home, Nopage, Reservation } from "./pages";
 
 function App() {
 	return (
 		<>
-			<Header />
-			<Main />
-			<Footer />
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Layout />}>
+						<Route index element={<Home />} />
+						<Route path="/reservation" element={<Reservation />} />
+						<Route path="*" element={<Nopage />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }

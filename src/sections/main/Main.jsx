@@ -1,8 +1,12 @@
-import React from "react";
 import "./main.css";
+import { Outlet } from "react-router-dom";
 
 const Main = () => {
-	return <main>Main Section</main>;
+	return (
+		<main>
+			<Outlet />
+		</main>
+	);
 };
 
 export default Main;
