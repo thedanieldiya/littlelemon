@@ -25,72 +25,36 @@
 	font-weight: 400;
 	line-height: 1.5;
 	font-size: 16px;
-	@media screen and (max-width: 768px) {
-		font-size: 14px;
-	}
-	@media screen and (max-width: 540px) {
-		font-size: 12px;
-	}
 }
 
 .display {
 	font-family: var(--markazi);
 	font-weight: 500;
 	font-size: 64px;
-	@media screen and (max-width: 768px) {
-		font-size: 56px;
-	}
-	@media screen and (max-width: 540px) {
-		font-size: 48px;
-	}
 }
 
 .sub__title {
 	font-family: var(--markazi);
 	font-weight: 400;
 	font-size: 40px;
-	@media screen and (max-width: 768px) {
-		font-size: 35px;
-	}
-	@media screen and (max-width: 540px) {
-		font-size: 30px;
-	}
 }
 
 .lead__text {
 	font-family: var(--karla);
 	font-weight: 600;
 	font-size: 18px;
-	@media screen and (max-width: 768px) {
-		font-size: 16px;
-	}
-	@media screen and (max-width: 540px) {
-		font-size: 14px;
-	}
 }
 
 .card__title {
 	font-family: var(--karla);
 	font-weight: 700;
 	font-size: 18px;
-	@media screen and (max-width: 768px) {
-		font-size: 16px;
-	}
-	@media screen and (max-width: 540px) {
-		font-size: 14px;
-	}
 }
 
 .highlight__text {
 	font-family: var(--karla);
 	font-weight: 500;
 	font-size: 16px;
-	@media screen and (max-width: 768px) {
-		font-size: 14px;
-	}
-	@media screen and (max-width: 540px) {
-		font-size: 12px;
-	}
 }
 
 .shadow {
@@ -113,6 +77,7 @@ ul {
 	transition: all 0.2s ease-in-out;
 	border: none;
 	outline: none;
+	color: var(--s-black);
 }
 
 .button:hover {
@@ -125,18 +90,71 @@ ul {
 	color: var(--s-black);
 	padding: 16px 48px;
 	border-radius: 8px;
-	@media screen and (max-width: 768px) {
-		padding: 14px 40px;
-		font-size: 16px;
-	}
-	@media screen and (max-width: 540px) {
-		padding: 12px 32px;
-		font-size: 14px;
-	}
 }
 
 .button__small {
 	font-size: 12px;
 	padding: 8px 24px;
 	border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.button__large {
+		padding: 14px 40px;
+		font-size: 16px;
+	}
+
+	.highlight__text {
+		font-size: 14px;
+	}
+
+	.paragraph__text {
+		font-size: 14px;
+	}
+
+	.card__title {
+		font-size: 16px;
+	}
+
+	.lead__text {
+		font-size: 16px;
+	}
+
+	.sub__title {
+		font-size: 36px;
+	}
+
+	.display {
+		font-size: 56px;
+	}
+}
+@media screen and (max-width: 540px) {
+	.button__large {
+		padding: 12px 32px;
+		font-size: 14px;
+	}
+
+	.highlight__text {
+		font-size: 12px;
+	}
+
+	.paragraph__text {
+		font-size: 12px;
+	}
+
+	.card__title {
+		font-size: 14px;
+	}
+
+	.lead__text {
+		font-size: 14px;
+	}
+
+	.sub__title {
+		font-size: 30px;
+	}
+
+	.display {
+		font-size: 48px;
+	}
 }
