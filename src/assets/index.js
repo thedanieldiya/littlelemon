@@ -5,3 +5,5 @@ export { default as GreekSalad } from "./greekSalad.jpg";
 export { default as LemonDessert } from "./lemonDessert.jpg";
 export { default as Bruschetta } from "./bruschetta.jpg";
 export { default as Nachos } from "./nachos.jpg";
+export { default as Alice } from "./alice.jpg";
+export { default as James } from "./james.jpg";
