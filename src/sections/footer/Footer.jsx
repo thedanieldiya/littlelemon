@@ -38,7 +38,7 @@ const Footer = () => {
 						<ul>
 							<li>
 								<a href="http://maps.google.com">
-									Little Lemon Restaurant, Chicago. y
+									Little Lemon Restaurant, Chicago, Illinois.
 								</a>
 							</li>
 							<li>

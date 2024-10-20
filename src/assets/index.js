@@ -7,3 +7,5 @@ export { default as Bruschetta } from "./bruschetta.jpg";
 export { default as Nachos } from "./nachos.jpg";
 export { default as Alice } from "./alice.jpg";
 export { default as James } from "./james.jpg";
+export { default as Mario } from "./marioAdrianA.jpg";
+export { default as Adrian } from "./marioAdrianB.jpg";

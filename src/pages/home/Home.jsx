@@ -3,6 +3,7 @@ import "./home.css";
 import Hero from "./hero/Hero";
 import Specials from "./specials/Specials";
 import Testimonials from "./testimonials/Testimonials";
+import WhoWeAre from "./whoweare/WhoWeAre";
 
 const Home = () => {
 	return (
@@ -10,6 +11,7 @@ const Home = () => {
 			<Hero />
 			<Specials />
 			<Testimonials />
+			<WhoWeAre />
 		</>
 	);
 };
