@@ -9,3 +9,4 @@ export { default as Alice } from "./alice.jpg";
 export { default as James } from "./james.jpg";
 export { default as Mario } from "./marioAdrianA.jpg";
 export { default as Adrian } from "./marioAdrianB.jpg";
+export { default as Restaurant } from "./restaurant.jpg";

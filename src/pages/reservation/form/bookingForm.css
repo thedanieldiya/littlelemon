@@ -1,0 +1,36 @@
+form button {
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.reservation__details {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 8px;
+	margin: 8px 0;
+}
+
+.select__container > p {
+	margin-bottom: 4px;
+}
+
+.select {
+	display: flex;
+	align-items: center;
+	padding: 4px;
+	gap: 4px;
+	border: 2px solid var(--green-25);
+	border-radius: 8px;
+}
+
+.select select,
+.select input {
+	width: 100%;
+	border: none;
+	outline: none;
+}
+
+.select svg {
+	width: 24px;
+	height: 24px;
+}

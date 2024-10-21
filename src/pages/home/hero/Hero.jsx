@@ -15,7 +15,7 @@ const Hero = () => {
 						artistry. Immerse yourself in a world of exquisite flavors,
 						carefully crafted from the finest ingredients.
 					</p>
-					<Link to="/reservation">
+					<Link to="/reservation#reserveATable">
 						<button className="button__large button shadow">
 							Reserve a table
 						</button>

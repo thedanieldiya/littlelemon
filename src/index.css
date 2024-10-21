@@ -4,6 +4,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 :root {
@@ -83,6 +84,7 @@ ul {
 .button:hover {
 	background-color: var(--s-peach);
 	color: var(--green);
+	cursor: pointer;
 }
 
 .button__large {
