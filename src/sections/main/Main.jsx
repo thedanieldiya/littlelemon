@@ -38,7 +38,7 @@ const Main = () => {
 	}, []);
 
 	return (
-		<main>
+		<main aria-label="On Click">
 			<Outlet context={{ availableTimes, dispatch, submitForm }} />
 		</main>
 	);

@@ -262,13 +262,6 @@ const BookingForm = () => {
 					</button>
 				</form>
 			</section>
-
-			{/* {showDialog && (
-				<>
-					<div className="dialog"></div>
-					<div className="overlay" onClick={() => setShowDialog(false)} />
-				</>
-			)} */}
 		</div>
 	);
 };
