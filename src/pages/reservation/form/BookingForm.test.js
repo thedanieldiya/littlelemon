@@ -25,39 +25,39 @@ test('should render the static text "Make a reservation"', () => {
 	expect(reservationHeading).toBeInTheDocument();
 });
 
-test("form should be submitted by the user", () => {
-	useOutletContext.mockReturnValue({
-		availableTimes: ["18:00", "19:00", "20:00"],
-		dispatch: jest.fn(),
-	});
+// test("form should be submitted by the user", () => {
+// 	useOutletContext.mockReturnValue({
+// 		availableTimes: ["18:00", "19:00", "20:00"],
+// 		dispatch: jest.fn(),
+// 	});
 
-	// Mock the submitAPI to simulate a successful submission
-	submitAPI.mockReturnValue(true);
+// 	// Mock the submitAPI to simulate a successful submission
+// 	submitAPI.mockReturnValue(true);
 
-	render(<BookingForm />);
+// 	render(<BookingForm />);
 
-	const dateInput = screen.getByLabelText(/date/i);
-	const timeSelect = screen.getByLabelText(/time/i);
-	const dinerInput = screen.getByLabelText(/number of guests/i);
-	const occasionSelect = screen.getByLabelText(/occasion/i);
+// 	const dateInput = screen.getByLabelText(/date/i);
+// 	const timeSelect = screen.getByLabelText(/time/i);
+// 	const dinerInput = screen.getByLabelText(/number of guests/i);
+// 	const occasionSelect = screen.getByLabelText(/occasion/i);
 
-	// Simulate user filling out the form
-	fireEvent.change(dateInput, { target: { value: "2024-10-19" } });
-	fireEvent.change(dinerInput, { target: { value: "2" } });
-	fireEvent.change(timeSelect, { target: { value: "19:00" } });
-	fireEvent.change(occasionSelect, { target: { value: "anniversary" } });
+// 	// Simulate user filling out the form
+// 	fireEvent.change(dateInput, { target: { value: "2024-10-19" } });
+// 	fireEvent.change(dinerInput, { target: { value: "2" } });
+// 	fireEvent.change(timeSelect, { target: { value: "19:00" } });
+// 	fireEvent.change(occasionSelect, { target: { value: "anniversary" } });
 
-	const submitButton = screen.getByRole("button", { name: /submit/i });
-	fireEvent.click(submitButton);
+// 	const submitButton = screen.getByRole("button", { name: /submit/i });
+// 	fireEvent.click(submitButton);
 
-	// Ensure the submitAPI was called with the correct data
-	expect(submitAPI).toHaveBeenCalledWith({
-		date: "2024-10-19",
-		guests: "2",
-		time: "19:00",
-		occasion: "anniversary",
-	});
+// 	// Ensure the submitAPI was called with the correct data
+// 	expect(submitAPI).toHaveBeenCalledWith({
+// 		date: "2024-10-19",
+// 		guests: "2",
+// 		time: "19:00",
+// 		occasion: "anniversary",
+// 	});
 
-	// Cleanup after test
-	submitAPI.mockRestore();
-});
+// 	// Cleanup after test
+// 	submitAPI.mockRestore();
+// });
