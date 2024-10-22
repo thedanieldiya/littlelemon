@@ -17,20 +17,31 @@ form button {
 .select {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	padding: 4px;
 	gap: 4px;
 	border: 2px solid var(--green-25);
 	border-radius: 8px;
 }
 
+.select + p {
+	color: red;
+}
+
 .select select,
 .select input {
-	width: 100%;
+	width: 100% !important;
+	/* min-width: 100%; */
 	border: none;
 	outline: none;
+	background-color: transparent;
 }
 
 .select svg {
 	width: 24px;
 	height: 24px;
+}
+
+.dialog {
+	z-index: 20;
 }

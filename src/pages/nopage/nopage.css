@@ -3,9 +3,10 @@
 	justify-content: center;
 	align-items: center;
 	height: 80vh;
+	color: var(--s-black);
 }
 
-h2 {
+.nopage h2 {
 	font-family: var(--markazi);
 	font-size: 48px;
 	font-weight: bold;

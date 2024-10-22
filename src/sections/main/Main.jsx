@@ -1,21 +1,45 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import "./main.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { fetchAPI, submitAPI } from "../../api";
 
 const initializeTimes = () => {
-	return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+	const today = new Date();
+	return fetchAPI(today);
 };
 
 const updateTimes = (state, action) => {
-	return initializeTimes();
+	if (action.type === "UPDATE_DATE") {
+		return fetchAPI(action.payload);
+	}
+	return state;
 };
 
 const Main = () => {
-	const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+	const [availableTimes, dispatch] = useReducer(
+		updateTimes,
+		[],
+		initializeTimes
+	);
+	const navigate = useNavigate(); // useNavigate hook
+
+	const submitForm = (formData) => {
+		const isSubmitted = submitAPI(formData);
+		if (isSubmitted) {
+			navigate("/confirm"); // Navigate to the confirmation page
+		} else {
+			console.error("Form submission failed");
+		}
+	};
+
+	useEffect(() => {
+		const today = new Date();
+		dispatch({ type: "UPDATE_DATE", payload: today });
+	}, []);
 
 	return (
 		<main>
-			<Outlet context={{ availableTimes, dispatch }} />
+			<Outlet context={{ availableTimes, dispatch, submitForm }} />
 		</main>
 	);
 };

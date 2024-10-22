@@ -1,21 +1,92 @@
 import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import "./bookingForm.css";
+// import { submitAPI } from "../../../api";
+// import { SubmitForm } from "../../../sections/main/Main";
 
 const BookingForm = () => {
-	const { availableTimes, dispatch } = useOutletContext();
+	const { availableTimes, dispatch, submitForm } = useOutletContext();
 	const [occasion, setOccasion] = useState("");
 	const [time, setTime] = useState("");
-	const [diner, setDiner] = useState("");
+	const [guests, setGuests] = useState("");
 	const [date, setDate] = useState("");
+	// const [showDialog, setShowDialog] = useState(false);
+	const [formErrors, setFormErrors] = useState({
+		time: "",
+		guests: "",
+		date: "",
+		occasion: "",
+	});
 
+	const validateField = (name, value) => {
+		let error = "";
+
+		if (name === "date" && value === "") {
+			error = "Please choose a date";
+		} else if (name === "time" && value === "") {
+			error = "Please choose a time";
+		} else if (name === "occasion" && value === "") {
+			error = "Please choose an occasion";
+		} else if (name === "guests" && (value < 1 || value > 10)) {
+			error = "Please enter a guest number between 1 and 10";
+		}
+
+		setFormErrors((prevErrors) => ({
+			...prevErrors,
+			[name]: error,
+		}));
+
+		return error === "";
+	};
+
+	// Validate the entire form
+	const validateForm = () => {
+		const fields = [
+			{ name: "date", value: date },
+			{ name: "time", value: time },
+			{ name: "occasion", value: occasion },
+			{ name: "guests", value: guests },
+		];
+
+		let isFormValid = true;
+		const newErrors = {};
+
+		fields.forEach(({ name, value }) => {
+			const isValid = validateField(name, value);
+			if (!isValid) {
+				isFormValid = false;
+			}
+		});
+
+		setFormErrors((prevErrors) => ({
+			...prevErrors,
+			...newErrors,
+		}));
+
+		return isFormValid;
+	};
+
+	const handleBlur = (e) => {
+		const { name, value } = e.target;
+		validateField(name, value);
+	};
+
+	// Handle form submission
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
 
-		if (occasion === "" || time === "" || diner === "" || date === "") {
-			console.log("not submitted");
+		if (validateForm()) {
+			const formData = { date, guests, time, occasion };
+			submitForm(formData);
+			// setShowDialog(true);
+			setDate("");
+			setGuests("");
+			setTime("");
+			setOccasion("");
+			console.log(formData);
+			// submitAPI(formData);
 		} else {
-			console.log("submitted");
+			console.log("not submitted");
 		}
 	};
 
@@ -29,15 +100,15 @@ const BookingForm = () => {
 		<div className="rForm">
 			<section className="section">
 				<h2 className="sub__title">Make a reservation</h2>
-				<form action="">
+				<form onSubmit={handleFormSubmit}>
 					<p className="card__title">Reservation Details</p>
 					<div className="reservation__details">
 						<div className="select__container">
-							<label htmlFor="res-date" className="paragraph__text">
+							<label htmlFor="date" className="paragraph__text">
 								Date
 							</label>
 							<div className="select">
-								<label htmlFor="res-date">
+								<label htmlFor="date">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="32px"
@@ -52,20 +123,25 @@ const BookingForm = () => {
 								</label>
 								<input
 									type="date"
-									name="res-date"
-									id="res-date"
+									name="date"
+									id="date"
 									value={date}
 									onChange={handleDateChange}
+									onBlur={handleBlur}
 									className="highlight__text"
 								/>
 							</div>
+							{formErrors.date && (
+								<p className="highlight__text">{formErrors.date}</p>
+							)}
 						</div>
+
 						<div className="select__container">
-							<label htmlFor="res-time" className="paragraph__text">
+							<label htmlFor="time" className="paragraph__text">
 								Time
 							</label>
 							<div className="select">
-								<label htmlFor="res-time">
+								<label htmlFor="time">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="32px"
@@ -86,9 +162,10 @@ const BookingForm = () => {
 								</label>
 								<select
 									name="time"
-									id="res-time"
+									id="time"
 									value={time}
 									onChange={(e) => setTime(e.target.value)}
+									onBlur={handleBlur}
 									className="highlight__text"
 								>
 									<option value=""></option>
@@ -99,10 +176,14 @@ const BookingForm = () => {
 									))}
 								</select>
 							</div>
+							{formErrors.time && (
+								<p className="highlight__text">{formErrors.time}</p>
+							)}
 						</div>
+
 						<div className="select__container">
 							<label htmlFor="guests" className="paragraph__text">
-								Number of diners
+								Number of guests
 							</label>
 							<div className="select highlight__text">
 								<label htmlFor="guests">
@@ -122,15 +203,19 @@ const BookingForm = () => {
 									type="number"
 									name="guests"
 									id="guests"
-									placeholder="1"
 									min="1"
 									max="10"
-									value={diner}
-									onChange={(e) => setDiner(e.target.value)}
+									value={guests}
+									onChange={(e) => setGuests(e.target.value)}
+									onBlur={handleBlur}
 									className="highlight__text"
 								/>
 							</div>
+							{formErrors.guests && (
+								<p className="highlight__text">{formErrors.guests}</p>
+							)}
 						</div>
+
 						<div className="select__container">
 							<label htmlFor="occasion" className="paragraph__text">
 								Occasion
@@ -154,6 +239,7 @@ const BookingForm = () => {
 									id="occasion"
 									value={occasion}
 									onChange={(e) => setOccasion(e.target.value)}
+									onBlur={handleBlur}
 									className="highlight__text"
 								>
 									<option value=""></option>
@@ -162,17 +248,27 @@ const BookingForm = () => {
 									<option value="anniversary">Anniversary</option>
 								</select>
 							</div>
+							{formErrors.occasion && (
+								<p className="highlight__text">{formErrors.occasion}</p>
+							)}
 						</div>
 					</div>
+
 					<button
 						type="submit"
 						className="button button__large highlight__text"
-						onClick={handleFormSubmit}
 					>
 						Submit
 					</button>
 				</form>
 			</section>
+
+			{/* {showDialog && (
+				<>
+					<div className="dialog"></div>
+					<div className="overlay" onClick={() => setShowDialog(false)} />
+				</>
+			)} */}
 		</div>
 	);
 };
